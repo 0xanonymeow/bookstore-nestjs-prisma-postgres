@@ -1,5 +1,5 @@
 {
-  "name": "nestjs-crud",
+  "name": "nestjs-prisma-postgres-book-store",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -24,6 +24,10 @@
     "@nestjs/core": "^9.0.0",
     "@nestjs/mapped-types": "^1.2.2",
     "@nestjs/platform-express": "^9.0.0",
+    "@prisma/client": "4.13.0",
+    "class-transformer": "^0.5.1",
+    "nestjs-prisma": "v0.21.0-dev.0",
+    "prisma": "^4.13.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0"
   },
@@ -37,6 +41,7 @@
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
+    "class-validator": "^0.14.0",
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
