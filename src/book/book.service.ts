@@ -1,26 +1,42 @@
 import { Injectable } from '@nestjs/common'
+import { Prisma } from '@prisma/client'
+import { PrismaService } from 'src/prisma/prisma.service'
 import { CreateBookDto } from './dto/create-book.dto'
 import { UpdateBookDto } from './dto/update-book.dto'
 
 @Injectable()
 export class BookService {
-  create(createBookDto: CreateBookDto) {
-    return 'This action adds a new book'
+  constructor(private prisma: PrismaService) {}
+
+  async create(createBookDto: CreateBookDto) {
+    const book = this.prisma.book.create({ data: createBookDto })
+    return book
   }
 
   findAll() {
-    return `This action returns all book`
+    const book = this.prisma.book.findMany()
+    return book
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} book`
+  find(id: number) {
+    const book = this.prisma.book.findUnique({ where: { id } })
+    return book
   }
 
   update(id: number, updateBookDto: UpdateBookDto) {
-    return `This action updates a #${id} book`
+    try {
+      const book = this.prisma.book.update({
+        where: { id },
+        data: updateBookDto,
+      })
+      return book
+    } catch (e) {
+      console.log(e instanceof Prisma.PrismaClientKnownRequestError)
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} book`
+  async remove(id: number) {
+    const book = this.prisma.book.delete({ where: { id } })
+    return book
   }
 }

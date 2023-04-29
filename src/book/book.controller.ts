@@ -1,11 +1,11 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
 } from '@nestjs/common'
 import { BookService } from './book.service'
 import { CreateBookDto } from './dto/create-book.dto'
@@ -26,8 +26,8 @@ export class BookController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.bookService.findOne(+id)
+  find(@Param('id') id: string) {
+    return this.bookService.find(+id)
   }
 
   @Patch(':id')
