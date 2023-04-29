@@ -1,5 +1,5 @@
 {
-  "name": "nestjs-prisma-postgres-book-store",
+  "name": "bookstore-nestjs-prisma-postgres",
   "version": "0.0.1",
   "description": "",
   "author": "",
