@@ -14,7 +14,8 @@
     "start:prod": "node dist/main",
     "start:db": "docker-compose up -d",
     "prisma:client:generate": "npx prisma generate",
-    "db:migrate": "npx prisma migrate deploy",
+    "db:migrate": "npx prisma migrate deploy && pnpm db:fixtures:apply",
+    "db:fixtures:apply": "node_modules/@getbigger-io/prisma-fixtures-cli/dist/cli.js fixtures/book.yaml",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -23,6 +24,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@getbigger-io/prisma-fixtures-cli": "^2.0.1",
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/mapped-types": "^1.2.2",
