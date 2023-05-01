@@ -18,6 +18,7 @@ async function bootstrap() {
       P2025: HttpStatus.NOT_FOUND,
     }),
   )
+  app.enableCors()
   app.listen(process.env.PORT ? parseInt(process.env.PORT) : 3000)
 }
 bootstrap()
