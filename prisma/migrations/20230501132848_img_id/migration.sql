@@ -1,2 +1,0 @@
--- AlterTable
-ALTER TABLE "Book" ADD COLUMN     "img_id" INTEGER NOT NULL DEFAULT 0;

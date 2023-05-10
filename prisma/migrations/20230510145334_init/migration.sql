@@ -1,11 +1,12 @@
 -- CreateTable
-CREATE TABLE "Book" (
+CREATE TABLE "book" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
     "author" TEXT NOT NULL,
     "price" DOUBLE PRECISION NOT NULL,
+    "img_id" INTEGER NOT NULL DEFAULT 0,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Book_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "book_pkey" PRIMARY KEY ("id")
 );
