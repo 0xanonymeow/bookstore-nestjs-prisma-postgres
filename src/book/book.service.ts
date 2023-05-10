@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common'
 import { Prisma } from '@prisma/client'
+import { paginateResponse } from 'src/lib/utils'
 import { PrismaService } from 'src/prisma/prisma.service'
 import { CreateBookDto } from './dto/create-book.dto'
 import { UpdateBookDto } from './dto/update-book.dto'
@@ -13,9 +14,23 @@ export class BookService {
     return book
   }
 
-  findAll() {
-    const book = this.prisma.book.findMany()
-    return book
+  async findAll(query) {
+    const take = query.take || 10
+    const page = query.page || 1
+    const skip = (page - 1) * take
+
+    const book = await this.prisma.$transaction([
+      this.prisma.book.findMany({
+        take: take,
+        skip: skip,
+        orderBy: {
+          id: 'asc',
+        },
+      }),
+      this.prisma.book.count(),
+    ])
+
+    return paginateResponse(book, page, take)
   }
 
   find(id: number) {
