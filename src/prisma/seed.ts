@@ -11,7 +11,7 @@ const main = async () => {
     },
   })
 
-  if (!isEmpty) return
+  if (!!!isEmpty) return
 
   const response = await Promise.all(
     map(
