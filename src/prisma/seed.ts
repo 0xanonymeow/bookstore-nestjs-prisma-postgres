@@ -5,6 +5,14 @@ import { map } from 'lodash'
 const prisma = new PrismaClient()
 
 const main = async () => {
+  const isEmpty = await prisma.book.findUnique({
+    where: {
+      id: 0,
+    },
+  })
+
+  if (!isEmpty) return
+
   const response = await Promise.all(
     map(
       [...Array(30)],
