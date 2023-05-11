@@ -27,7 +27,8 @@
     "postinstall": "pnpm prisma:client:generate && pnpm db:push"
   },
   "prisma": {
-    "seed": "ts-node src/prisma/seed.ts"
+    "seed": "ts-node src/prisma/seed.ts",
+    "schema": "src/prisma/schema.prisma"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
