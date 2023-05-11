@@ -1,8 +1,8 @@
-export function paginateResponse(
+export const paginateResponse = (
   data: [unknown[], number],
   page: number = 1,
   limit: number = 50,
-) {
+) => {
   const [result, total] = data
   const lastPage = Math.ceil(total / limit)
   const nextPage = page + 1 > lastPage ? null : page + 1

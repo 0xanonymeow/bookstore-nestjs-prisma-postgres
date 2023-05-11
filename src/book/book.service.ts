@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { Prisma } from '@prisma/client'
-import { paginateResponse } from 'src/lib/utils'
-import { PrismaService } from 'src/prisma/prisma.service'
+import { paginateResponse } from '../lib/utils'
+import { PrismaService } from '../prisma/prisma.service'
 import { CreateBookDto } from './dto/create-book.dto'
 import { UpdateBookDto } from './dto/update-book.dto'
 
