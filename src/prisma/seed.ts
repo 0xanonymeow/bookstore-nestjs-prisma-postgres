@@ -6,20 +6,21 @@ const prisma = new PrismaClient()
 
 const main = async () => {
   const response = await Promise.all(
-    map([
-      ...Array(30),
+    map(
+      [...Array(30)],
       async (_: undefined, i: number) =>
-        await prisma.book.upsert({
-          where: {},
-          update: {},
-          create: {
+        await prisma.book.create({
+          data: {
             title: faker.random.words(5),
-            author: faker.name.fullName(),
+            author: `${faker.name.firstName()} ${faker.name.lastName()}`,
             price: parseFloat(faker.commerce.price(10, 100, 2)),
-            img_id: i,
+            img_id: i + 1,
+          },
+          select: {
+            id: true,
           },
         }),
-    ]),
+    ),
   )
   console.log(response)
 }
