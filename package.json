@@ -25,7 +25,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "preinstall": "npx husky install",
-    "postinstall": "pnpm prisma:client:generate && db:seed"
+    "postinstall": "pnpm prisma:client:generate && pnpm db:seed"
   },
   "prisma": {
     "seed": "ts-node src/prisma/seed.ts",
