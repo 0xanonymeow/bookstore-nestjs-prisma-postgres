@@ -6,7 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "build": "nest build && pnpm prisma:client:generate && pnpm db:migrate:dev",
+    "build": "nest build && pnpm prisma:client:generate && pnpm db:migrate:deploy",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "pnpm prisma:client:generate && pnpm start:db && sleep 5 && pnpm db:migrate:dev && nest start --watch",
