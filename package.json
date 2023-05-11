@@ -6,7 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "build": "nest build && pnpm prisma:client:generate && pnpm db:migrate:deploy",
+    "build": "nest build && pnpm prisma:client:generate && pnpm db:push",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "pnpm prisma:client:generate && pnpm start:db && sleep 5 && pnpm db:migrate:dev && nest start --watch",
@@ -14,6 +14,7 @@
     "start:prod": "node dist/main",
     "start:db": "docker-compose up -d",
     "prisma:client:generate": "npx prisma generate",
+    "db:push": "npx prisma db push",
     "db:migrate:dev": "npx prisma migrate dev --name init",
     "db:migrate:deploy": "npx prisma migrate deploy",
     "db:fixtures:apply": "node_modules/@getbigger-io/prisma-fixtures-cli/dist/cli.js fixtures/book.yaml",
